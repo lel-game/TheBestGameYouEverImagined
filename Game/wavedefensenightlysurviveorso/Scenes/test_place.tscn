@@ -29,6 +29,10 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_32wsk")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.860531, -0.279097, 0.426136, 3.29179e-07, 0.836547, 0.547895, -0.509399, -0.471481, 0.719874, 0, 0, 0)
+shadow_enabled = true
+
 [node name="Ground" type="StaticBody3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 

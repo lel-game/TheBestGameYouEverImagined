@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dhndt3ha6t04x"]
+
+[ext_resource type="Script" uid="uid://dn6lgftvj0v0c" path="res://Scripts/BaseWeaponManager.gd" id="1_af7rn"]
+[ext_resource type="Script" uid="uid://y4ch53swjb0v" path="res://GunData/GunData.gd" id="2_15kab"]
+[ext_resource type="Script" uid="uid://d3iopseuvbtrl" path="res://Scripts/single_shot_component.gd" id="3_n6qb5"]
+[ext_resource type="Script" uid="uid://dejewan0rdipb" path="res://Scripts/reload_component.gd" id="4_srcfd"]
+
+[sub_resource type="Resource" id="Resource_646vd"]
+script = ExtResource("2_15kab")
+firerate = 0.1
+damage = 0.2
+current_ammo = 12
+magazine_size = 12
+custom_reload_size = 5
+reload_speed = 0.75
+spread = 10.0
+pellets = 1
+metadata/_custom_type_script = "uid://y4ch53swjb0v"
+
+[sub_resource type="BoxMesh" id="BoxMesh_646vd"]
+size = Vector3(0.2, 0.2, 1)
+
+[node name="Pistol" type="Node3D" node_paths=PackedStringArray("shot_component", "reload_component")]
+script = ExtResource("1_af7rn")
+gun_data = SubResource("Resource_646vd")
+shot_component = NodePath("SingleShotComponent")
+reload_component = NodePath("ReloadComponent")
+metadata/_custom_type_script = "uid://dn6lgftvj0v0c"
+
+[node name="SingleShotComponent" type="Node" parent="." node_paths=PackedStringArray("weapon_manager", "reload_manager", "muzzle_position")]
+script = ExtResource("3_n6qb5")
+firing_type = 0
+weapon_manager = NodePath("..")
+reload_manager = NodePath("../ReloadComponent")
+muzzle_position = NodePath("../Muzzle")
+
+[node name="ReloadComponent" type="Node" parent="." node_paths=PackedStringArray("weapon_manager")]
+script = ExtResource("4_srcfd")
+weapon_manager = NodePath("..")
+reload_type = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_646vd")
+skeleton = NodePath("../..")
+
+[node name="Muzzle" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.510069)
+gizmo_extents = 0.43

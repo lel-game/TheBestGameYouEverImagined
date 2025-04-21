@@ -5,7 +5,7 @@ var cooldown = 0.0
 @export_enum("Single","Auto") var firing_type
 @export var weapon_manager:BaseWeaponManager
 @export var reload_manager:ReloadComponent
-var bullet = preload("res://basic_bullet.tscn")
+var bullet = preload("res://Scenes/luger/basic_bullet.tscn")
 @export var muzzle_position:Marker3D
 
 func shoot():
