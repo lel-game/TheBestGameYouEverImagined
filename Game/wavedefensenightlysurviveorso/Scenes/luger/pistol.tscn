@@ -13,7 +13,7 @@ current_ammo = 12
 magazine_size = 12
 custom_reload_size = 5
 reload_speed = 0.75
-spread = 0.1
+spread = 2.0
 pellets = 1
 metadata/_custom_type_script = "uid://y4ch53swjb0v"
 
@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://dn6lgftvj0v0c"
 
 [node name="SingleShotComponent" type="Node" parent="." node_paths=PackedStringArray("weapon_manager", "reload_manager", "muzzle_position")]
 script = ExtResource("3_n6qb5")
-firing_type = 1
+firing_type = 0
 weapon_manager = NodePath("..")
 reload_manager = NodePath("../ReloadComponent")
 muzzle_position = NodePath("../Muzzle")
