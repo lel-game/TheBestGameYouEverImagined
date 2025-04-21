@@ -25,3 +25,6 @@ func _process(delta):
 	#RELOAD WHEN RELOAD
 	if Input.is_action_just_pressed("Reload"):
 		reload_component.attempt_reload()
+	#SWAYBACKTONORMALROTATION
+	rotation.x = rotate_toward(rotation.x,0,delta)
+	rotation.y = rotate_toward(rotation.y,0,delta)
