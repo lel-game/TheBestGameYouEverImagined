@@ -17,10 +17,9 @@ func shoot():
 	weapon_manager.rotate_y(randf_range(-sway_amount,sway_amount))
 	#SPAWN IN BULLET
 	var new_bullet = (bullet.instantiate() as Bullet)
+	add_child(new_bullet)
 	new_bullet.global_position = muzzle_position.global_position
 	new_bullet.direction = muzzle_position.global_transform.basis.z
-	add_child(new_bullet)
-
 
 func attempt_shot():
 	if weapon_manager.gun_data.current_ammo > 0 and not reload_manager.reloading:

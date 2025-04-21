@@ -7,7 +7,7 @@
 
 [sub_resource type="Resource" id="Resource_646vd"]
 script = ExtResource("2_15kab")
-firerate = 0.1
+firerate = 0.2
 damage = 0.2
 current_ammo = 12
 magazine_size = 12
