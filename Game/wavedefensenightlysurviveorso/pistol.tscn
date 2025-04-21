@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhndt3ha6t04x"]
+
+[ext_resource type="Script" uid="uid://dn6lgftvj0v0c" path="res://BaseWeaponManager.gd" id="1_08c3m"]
+[ext_resource type="Script" uid="uid://y4ch53swjb0v" path="res://GunData/GunData.gd" id="2_6e3nq"]
+[ext_resource type="Script" uid="uid://d3iopseuvbtrl" path="res://single_shot_component.gd" id="2_bttkv"]
+[ext_resource type="Script" uid="uid://dejewan0rdipb" path="res://reload_component.gd" id="4_646vd"]
+
+[sub_resource type="Resource" id="Resource_646vd"]
+script = ExtResource("2_6e3nq")
+firerate = 0.1
+damage = 0.2
+current_ammo = 12
+magazine_size = 12
+custom_reload_size = 5
+reload_speed = 0.75
+spread = 10.0
+pellets = 1
+metadata/_custom_type_script = "uid://y4ch53swjb0v"
+
+[sub_resource type="BoxMesh" id="BoxMesh_646vd"]
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_646vd"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_78vgs"]
+sky_material = SubResource("ProceduralSkyMaterial_646vd")
+
+[sub_resource type="Environment" id="Environment_onp47"]
+background_mode = 2
+sky = SubResource("Sky_78vgs")
+tonemap_mode = 2
+
+[node name="Pistol" type="Node3D" node_paths=PackedStringArray("shot_component", "reload_component")]
+script = ExtResource("1_08c3m")
+gun_data = SubResource("Resource_646vd")
+shot_component = NodePath("SingleShotComponent")
+reload_component = NodePath("ReloadComponent")
+metadata/_custom_type_script = "uid://dn6lgftvj0v0c"
+
+[node name="SingleShotComponent" type="Node" parent="." node_paths=PackedStringArray("weapon_manager", "reload_manager", "muzzle_position")]
+script = ExtResource("2_bttkv")
+firing_type = 0
+weapon_manager = NodePath("..")
+reload_manager = NodePath("../ReloadComponent")
+muzzle_position = NodePath("../Muzzle")
+
+[node name="ReloadComponent" type="Node" parent="." node_paths=PackedStringArray("weapon_manager")]
+script = ExtResource("4_646vd")
+weapon_manager = NodePath("..")
+reload_type = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_646vd")
+skeleton = NodePath("../..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249908, 0.465154, 1.16548)
+
+[node name="Muzzle" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.510069)
+gizmo_extents = 0.43
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_onp47")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true

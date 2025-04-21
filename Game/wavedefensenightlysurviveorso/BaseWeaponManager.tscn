@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://btt8l5jiu0650"]
+
+[ext_resource type="Script" uid="uid://dn6lgftvj0v0c" path="res://BaseWeaponManager.gd" id="1_er3mr"]
+
+[node name="BaseWeaponManager" type="Node3D"]
+script = ExtResource("1_er3mr")

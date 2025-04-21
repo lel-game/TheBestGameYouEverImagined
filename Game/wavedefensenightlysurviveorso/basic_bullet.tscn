@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfr4homek44gs"]
+
+[ext_resource type="Script" uid="uid://ckvyfy4lewwp7" path="res://basic_bullet.gd" id="1_qv3tp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qv3tp"]
+albedo_color = Color(1, 1, 0.254902, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 2.9
+
+[sub_resource type="BoxMesh" id="BoxMesh_o20mf"]
+size = Vector3(0.1, 0.1, 0.5)
+
+[node name="BasicBullet" type="Node3D"]
+script = ExtResource("1_qv3tp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.20249, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qv3tp")
+mesh = SubResource("BoxMesh_o20mf")
