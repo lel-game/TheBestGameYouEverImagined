@@ -19,5 +19,4 @@ func shoot():
 		var facing_direction = muzzle_position.global_transform.basis.z
 		var bullet_direction_spread = facing_direction.rotated(Vector3.UP,spread)
 		var bullet_direction_final = bullet_direction_spread.rotated(facing_direction.normalized(),2*PI/pellets*i)
-		print(bullet_direction_final)
 		new_bullet.direction = bullet_direction_final

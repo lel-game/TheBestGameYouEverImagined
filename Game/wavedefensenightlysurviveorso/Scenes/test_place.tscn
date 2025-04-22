@@ -31,10 +31,12 @@ environment = SubResource("Environment_32wsk")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.860531, -0.279097, 0.426136, 3.29179e-07, 0.836547, 0.547895, -0.509399, -0.471481, 0.719874, 0, 0, 0)
+light_energy = 0.27
 shadow_enabled = true
 
 [node name="Ground" type="StaticBody3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(19.7661, 0, 0, 0, 19.7661, 0, 0, 0, 19.7661, 0, 0, 0)
+collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -47,6 +49,7 @@ skeleton = NodePath("../..")
 
 [node name="FlyingCube" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.661617, 1.00239, -2.3531)
+collision_layer = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FlyingCube"]
 mesh = SubResource("BoxMesh_ne85i")
@@ -56,6 +59,7 @@ shape = SubResource("ConcavePolygonShape3D_0b08s")
 
 [node name="FlyingCube2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46026, 0.60351, -3.20175)
+collision_layer = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FlyingCube2"]
 mesh = SubResource("BoxMesh_ne85i")
@@ -65,6 +69,7 @@ shape = SubResource("ConcavePolygonShape3D_0b08s")
 
 [node name="FlyingCube3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73917, 0.556794, -0.342431)
+collision_layer = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FlyingCube3"]
 mesh = SubResource("BoxMesh_ne85i")
@@ -74,3 +79,4 @@ shape = SubResource("ConcavePolygonShape3D_0b08s")
 
 [node name="Player" parent="." instance=ExtResource("1_ducba")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0955116, 1.31209, -0.04682)
+collision_mask = 7

@@ -8,18 +8,15 @@ const shotgun = preload("res://shotgun.tscn")
 
 func set_weapon():
 	if current_weapon == "Pistol":
-		if get_child(0):
-			get_child(0).queue_free()
+		remove_all_children()
 		var new_weapon = pistol.instantiate()
 		add_child(new_weapon)
 	if current_weapon == "UZI":
-		if get_child(0):
-			get_child(0).queue_free()
+		remove_all_children()
 		var new_weapon = uzi.instantiate()
 		add_child(new_weapon)
 	if current_weapon == "Shotgun":
-		if get_child(0):
-			get_child(0).queue_free()
+		remove_all_children()
 		var new_weapon = shotgun.instantiate()
 		add_child(new_weapon)
 
@@ -33,3 +30,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("3"):
 		current_weapon = "Shotgun"
 		set_weapon()
+
+func remove_all_children():
+	for child in get_children():
+		child.queue_free()

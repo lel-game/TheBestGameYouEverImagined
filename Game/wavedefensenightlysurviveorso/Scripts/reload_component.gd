@@ -12,6 +12,7 @@ func attempt_reload():
 	else:
 		reload_cooldown = weapon_manager.gun_data.reload_speed
 		reloading = true
+		print("reloading")
 		
 func reload():
 	match reload_type:
@@ -32,3 +33,5 @@ func _process(delta):
 		reloading = false
 		reload_cooldown = 0.0
 		reload()
+	if weapon_manager.gun_data.current_ammo <= 0 and reloading == false:
+		attempt_reload()

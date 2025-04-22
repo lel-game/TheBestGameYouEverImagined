@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfr4homek44gs"]
+[gd_scene load_steps=5 format=3 uid="uid://dfr4homek44gs"]
 
 [ext_resource type="Script" uid="uid://ckvyfy4lewwp7" path="res://Scripts/basic_bullet.gd" id="1_qv3tp"]
 
@@ -11,6 +11,9 @@ emission_energy_multiplier = 2.9
 [sub_resource type="BoxMesh" id="BoxMesh_o20mf"]
 size = Vector3(0.05, 0.05, 0.25)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_oajwf"]
+size = Vector3(0.1, 0.1, 0.566162)
+
 [node name="BasicBullet" type="Node3D"]
 script = ExtResource("1_qv3tp")
 
@@ -18,3 +21,12 @@ script = ExtResource("1_qv3tp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.20249, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_qv3tp")
 mesh = SubResource("BoxMesh_o20mf")
+
+[node name="BulletCollision" type="Area3D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BulletCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00672609)
+shape = SubResource("BoxShape3D_oajwf")
+
+[connection signal="body_entered" from="BulletCollision" to="." method="_on_bullet_collision_body_entered"]

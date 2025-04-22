@@ -11,3 +11,7 @@ func _physics_process(delta):
 	look_at(direction+global_position)
 	global_position += direction * speed * delta
 	visible = true
+
+
+func _on_bullet_collision_body_entered(body):
+	queue_free()
