@@ -1,6 +1,6 @@
 extends ShotComponent
 class_name ShotgunShotComponent
-
+@export var random_spread := true
 
 func shoot():
 	weapon_manager.gun_data.current_ammo -= 1
@@ -17,6 +17,10 @@ func shoot():
 		var spread = deg_to_rad(weapon_manager.gun_data.spread)
 		var pellets = weapon_manager.gun_data.pellets
 		var facing_direction = muzzle_position.global_transform.basis.z
-		var bullet_direction_spread = facing_direction.rotated(Vector3.UP,spread)
+		var bullet_direction_spread
+		if random_spread:
+			bullet_direction_spread = facing_direction.rotated(Vector3.UP,randf_range(0,spread*2))
+		else:
+			bullet_direction_spread = facing_direction.rotated(Vector3.UP,spread)
 		var bullet_direction_final = bullet_direction_spread.rotated(facing_direction.normalized(),2*PI/pellets*i)
 		new_bullet.direction = bullet_direction_final

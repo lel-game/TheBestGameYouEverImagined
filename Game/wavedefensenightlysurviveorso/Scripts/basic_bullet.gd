@@ -1,7 +1,7 @@
 extends Node3D
 class_name Bullet
 @onready var direction = Vector3(0,0,1)
-var speed = -100
+var speed = -60
 
 func _ready():
 	visible = false
